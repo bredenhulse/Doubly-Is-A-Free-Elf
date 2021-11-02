@@ -1,18 +1,22 @@
 struct Node{
     char val;
     Node* next;
+    Node* prev;
 
     Node(){
         this->val = 0;
         this->next = nullptr;
+        this->prev = nullptr;
     }
     Node(char v){
         this->val = v;
         this->next = nullptr;
+        this->prev = nullptr;
     }
     Node(char v, Node n){
         this->val = v;
         this->next = &n;
+        this->prev = nullptr;
     }
 };
 
