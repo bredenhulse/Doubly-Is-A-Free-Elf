@@ -1,5 +1,5 @@
 struct Node{
-    char val;
+    int val;
     Node* next;
     Node* prev;
 
@@ -68,7 +68,12 @@ class List{
             return front -> val;
         }
         void move_up(){ //move iterator forward one
-            it = it->next;
+            it = it -> next;
+        }
+        void move_back(){ //moves iterator to the previous one
+            if(it -> prev != nullptr){
+                it = it -> prev;
+            }
         }
         void push_front(char x){ //Add another value to the front
             Node temp(x,*front);
@@ -97,5 +102,12 @@ class List{
         void clear(){ //Will empty the list
             Node *temp = front;
             it = front;
+        }
+        int print_list(){
+            it = front;
+            while(it->next != nullptr){
+                return it->val;
+                it = it->next;
+            }
         }
 };
