@@ -103,6 +103,9 @@ class List{
             Node *temp = new Node(y);
             temp->prev = it->prev;
             temp->next = it;
+            it->prev = temp;
+            temp->prev = it;
+            it->next = temp;
             it = temp;
             size++;
         }
