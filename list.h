@@ -115,9 +115,13 @@ class List{
         }
         int print_list(){
             it = front;
-            while(it->next != nullptr){
+            if(it->next == nullptr){
                 return it->val;
-                it = it->next;
+            }
+            else
+                while(it->next != nullptr){
+                    return it->val;
+                    it = it->next;
             }
         }
 };
