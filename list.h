@@ -8,12 +8,12 @@ struct Node{
         this->next = nullptr;
         this->prev = nullptr;
     }
-    Node(char v){
+    Node(int v){
         this->val = v;
         this->next = nullptr;
         this->prev = nullptr;
     }
-    Node(char v, Node n){
+    Node(int v, Node n){
         this->val = v;
         this->next = &n;
         this->prev = nullptr;
@@ -33,7 +33,7 @@ class List{
             this->it = front;
             this->size = 0;
         }
-        List(char v){
+        List(int v){
             Node n(v);
             this->front = &n;
             this->it = &n;
@@ -75,7 +75,7 @@ class List{
                 it = it -> prev;
             }
         }
-        void push_front(char x){ //Add another value to the front
+        void push_front(int x){ //Add another value to the front
             Node temp(x,*front);
             front = &temp;
             size++;
@@ -85,7 +85,7 @@ class List{
             front = front->next;
             delete temp;
         }
-        void insert_after(char y){ //insert value where desired
+        void insert_after(int y){ //insert value where desired
             if(it->next != nullptr){
                 Node *temp = new Node(y);
                 temp->next = it->next;
@@ -97,6 +97,13 @@ class List{
                 it->next = temp;
                 it = temp;
             }
+            size++;
+        }
+        void insert_here(int y){ // Will insert value where iterator is
+            Node *temp = new Node(y);
+            temp->prev = it->prev;
+            temp->next = it;
+            it = temp;
             size++;
         }
         void clear(){ //Will empty the list

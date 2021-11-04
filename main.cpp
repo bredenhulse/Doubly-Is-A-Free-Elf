@@ -10,38 +10,21 @@ Description: It is a linked list.
 using namespace std;
 
 int main(){
-    List beiju;
+    List sorted;
     //open files
     ifstream infile;
     infile.open("Test.txt");
-    ofstream fout;
-    fout.open("outfile");
     string testCase;
     //reads in the file
+    int num = 1;
+    // To keep count of how many times it has ran
     while(infile >> testCase){
-        beiju.begin();
-        for(int i = 0; i < testCase.size(); i++){
-            if(testCase[i] == '['){
-               beiju.begin(); 
-            }
-            else if(testCase[i] == ']'){
-                beiju.end();
-            }
-            else{
-                beiju.insert_after(testCase[i]);
+        for(int i = 0; i < num; i++){
+            if(sorted.get_iterator() == nullptr){
+                sorted.insert_here(testCase[i]);
             }
         }
-        //Sends to the outfile
-        beiju.begin();
-        while(beiju.get_iterator() != ']'){
-            if(beiju.get_iterator() != '['){
-                fout << beiju.get_iterator();
-            }
-            beiju.move_up();
-        }
-        beiju.clear();
-        fout << endl;
+        num++;
     }
     infile.close();
-    fout.close();
 }
