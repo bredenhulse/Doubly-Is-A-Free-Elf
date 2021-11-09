@@ -115,13 +115,19 @@ class List{
         }
         int print_list(){
             it = front;
-            if(it->next == nullptr){
-                return it->val;
-            }
-            else
-                while(it->next != nullptr){
-                    return it->val;
-                    it = it->next;
+            bool done = false;
+            while(done != true){
+                if(it->next == nullptr){
+                    std::cout << it->val;
+                    std::cout << " ";
+                    done = true;
+                }
+                else
+                    while(it->next != nullptr){
+                        std::cout << it->val;
+                        std::cout << " ";
+                        it = it->next;
+                }
             }
         }
 };
