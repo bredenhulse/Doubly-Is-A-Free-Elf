@@ -25,7 +25,7 @@ class List{
         Node* front; //points to the front of list
         Node* it; //points to the current node
         int size; // gives size
-        bool empty; //checks to see if empty
+        bool empty = true; //checks to see if empty
 
     public:
         List(){
@@ -68,6 +68,9 @@ class List{
             return front -> val;
         }
         void move_up(){ //move iterator forward one
+            if(it -> next == nullptr){
+                
+            }
             it = it -> next;
         }
         void move_back(){ //moves iterator to the previous one
@@ -79,6 +82,7 @@ class List{
             Node temp(x,*front);
             front = &temp;
             size++;
+            empty = false;
         }
         void pop_front(){ // remove the front
             Node *temp = front;
@@ -98,6 +102,7 @@ class List{
                 it = temp;
             }
             size++;
+            empty = false;
         }
         void insert_here(int y){ // Will insert value where iterator is
             Node *temp = new Node(y);
@@ -107,6 +112,7 @@ class List{
             temp->prev = it;
             it->next = temp;
             it = temp;
+            empty = false;
             size++;
         }
         void clear(){ //Will empty the list
@@ -129,5 +135,6 @@ class List{
                         it = it->next;
                 }
             }
+            return it->val;
         }
 };
